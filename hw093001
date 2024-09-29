@@ -1,0 +1,106 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyOQPyh7vCnFfidBvYZ472aW",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/imkliang/python1130910/blob/main/hw093001\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "WXdEX7wKqifl",
+        "outputId": "898a60b9-1717-4c68-c110-6d946ae09868"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "3\n",
+            "3 \n",
+            "0 0\n",
+            " 0 1\n",
+            " 1 0 \n",
+            "1.000000\n",
+            "4\n",
+            " 6 4\n",
+            " 9 2 \n",
+            "8 7 \n",
+            "3 9 \n",
+            "3.605551\n",
+            "5\n",
+            " 7.377359 3.113089\n",
+            " 8.899004 4.047913 \n",
+            " 3.929112 9.695250\n",
+            "  8.377879 7.799725 \n",
+            " 5.508218 2.498832\n",
+            "1.785861\n"
+          ]
+        }
+      ],
+      "source": [
+        "import math\n",
+        "\n",
+        "def cal_dist(po1, po2):\n",
+        "  #calculate distance about point 1 and point 2\n",
+        "\n",
+        "  x1, y1 = po1\n",
+        "  x2, y2 = po2\n",
+        "  return math.sqrt((x1 - x2)**2 + (y1 - y2)**2)\n",
+        "\n",
+        "def find_closest_pair(pts):\n",
+        "  #Find the distance between the closest pair of points.\n",
+        "\n",
+        "  min_dist = float('inf')\n",
+        "  for i in range(len(pts)):\n",
+        "    for j in range(i + 1, len(pts)):\n",
+        "      two_dist = cal_dist(pts[i], pts[j])\n",
+        "      min_dist = min(min_dist, two_dist)\n",
+        "  return min_dist\n",
+        "\n",
+        "# Read the number of test cases\n",
+        "Tol = int(input())\n",
+        "\n",
+        "# Process each test case\n",
+        "for _ in range(Tol):\n",
+        "  # Read the number of points\n",
+        "  n = int(input())\n",
+        "\n",
+        "  # Read the points\n",
+        "  points = []\n",
+        "  for _ in range(n):\n",
+        "    x, y = map(float, input().split())\n",
+        "    points.append((x, y))\n",
+        "\n",
+        "  # Find and print the closest pair distance\n",
+        "  closest_dist = find_closest_pair(points)\n",
+        "  print(f\"{closest_dist:.6f}\")"
+      ]
+    }
+  ]
+}
