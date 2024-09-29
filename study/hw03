@@ -1,0 +1,35 @@
+import math
+
+def cal_dist(po1, po2):
+  #calculate distance about point 1 and point 2
+
+  x1, y1 = po1
+  x2, y2 = po2
+  return math.sqrt((x1 - x2)**2 + (y1 - y2)**2)
+
+def find_closest_pair(pts):
+  #Find the distance between the closest pair of points.
+
+  min_dist = float('inf')
+  for i in range(len(pts)):
+    for j in range(i + 1, len(pts)):
+      two_dist = cal_dist(pts[i], pts[j])
+      min_dist = min(min_dist, two_dist)
+  return min_dist
+
+# Read the  test numbers
+Tol = int(input())
+
+for _ in range(Tol):
+  # Read the number of points
+  n = int(input())
+
+  # Read the point
+  points = []
+  for _ in range(n):
+    x, y = map(float, input().split())
+    points.append((x, y))
+
+  # print the closest pair 
+  closest_dist = find_closest_pair(points)
+  print(f"{closest_dist:.6f}")
