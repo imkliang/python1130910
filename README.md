@@ -32,3 +32,7 @@ print(f"4. {'為你自己學 Rust':<20} {'NTD 250'}")
 2. 為你自己學 Git            NTD 200
 3. 為你自己學 Ruby           NTD 180
 4. 為你自己學 Rust           NTD 250
+
+
+map (function,a) 
+
